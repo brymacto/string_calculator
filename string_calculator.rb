@@ -32,7 +32,7 @@ class Calculator
     num_array = numbers.split(regexp).map(&:to_i)
 
     if num_array.any? {|num| num < 0 }
-      raise "negatives not allowed"
+      raise NegativesError, "negatives not allowed"
     end
 
     num_array.reject{ |num| num > 1000 }.reduce(0, :+)
@@ -40,3 +40,6 @@ class Calculator
 end
 
 
+class NegativesError < StandardError
+
+end

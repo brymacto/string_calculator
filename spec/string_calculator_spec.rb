@@ -32,14 +32,12 @@ describe Calculator do
       expect(subject.add("//***\n2***4")).to eql(6)
     end
 
-    it "raises exception when negative number used" do
-      expect{ subject.add("1,-2,3,4")}.to raise_error
-    end
+    # it "raises exception when negative number used" do
+    #   expect{ subject.add("1,-2,3,4")}.to raise_error
+    # end
 
     it "raises 'negatives not allowed' exception when negative number used" do
-      expect{ subject.add("1,-2,3,4")}.to raise_error { |error|
-        error.should be_a(NegativesErorr)
-      }
+      expect{ subject.add("1,-2,3,4")}.to raise_error(NegativesError, "negatives not allowed")
     end
   end
 
