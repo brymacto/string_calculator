@@ -31,8 +31,14 @@ class Calculator
     regexp = Regexp.new get_regexp(input_string)
     num_array = numbers.split(regexp).map(&:to_i)
 
+    negatives = []
+    num_array.each do |num| 
+      negatives << num if num < 0
+    end
+
+
     if num_array.any? {|num| num < 0 }
-      raise NegativesError, "negatives not allowed"
+      raise NegativesError, "negatives not allowed: #{negatives.join(',')}"
     end
 
     num_array.reject{ |num| num > 1000 }.reduce(0, :+)
