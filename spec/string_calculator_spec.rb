@@ -36,6 +36,11 @@ describe Calculator do
       expect{ subject.add("1,-2,-3,4")}.to raise_error(NegativesError, "negatives not allowed: -2, -3")
     end
 
+    it "supports multiple custom delimiters" do
+      expect(subject.add("//[;][xx]\n1;2xx3")).to eql(6)
+      expect(subject.add("//[*][xx][yyy]\n1*2xx3yyy7")).to eql(13)
+    end
+
   end
 
   describe "#get_regexp" do
