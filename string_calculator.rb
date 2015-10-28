@@ -14,6 +14,7 @@ class Calculator
     if delimiter
       input_string[3 + delimiter.length, input_string.length]
     else
+      input_string
     end
   end
 
