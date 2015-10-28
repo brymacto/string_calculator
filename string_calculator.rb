@@ -9,6 +9,14 @@ class Calculator
     end
   end
 
+  def get_numbers(input_string)
+    delimiter = get_delimiter(input_string)
+    if delimiter
+      input_string[3 + delimiter.length, input_string.length]
+    else
+    end
+  end
+
   def add(numbers)
     numbers.split(/[,\n]/).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
   end
