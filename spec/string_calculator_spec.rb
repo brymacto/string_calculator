@@ -27,6 +27,10 @@ describe Calculator do
       expect(subject.add("//;\n1;2")).to eql(3)
       expect(subject.add("//%\n1%2%4")).to eql(7)
     end
+
+    it "supports custom delimiters of any length" do
+      expect(subject.add("//***\n2***4")).to eql(6)
+    end
   end
 
   describe "#get_regexp" do
