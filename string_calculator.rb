@@ -28,7 +28,9 @@ class Calculator
     else
       numbers = input_string
     end
-    numbers.split(/[,\n]/).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
+    # numbers.split(/[,\n]/).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
+    regexp = Regexp.new get_regexp(input_string)
+    numbers.split(regexp).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
   end
 end
 
