@@ -22,7 +22,6 @@ describe Calculator do
       expect(subject.add("1,1001,3")).to eql(4)
     end
 
-
     it "supports custom delimiters" do
       expect(subject.add("//;\n1;2")).to eql(3)
       expect(subject.add("//%\n1%2%4")).to eql(7)
@@ -32,12 +31,7 @@ describe Calculator do
       expect(subject.add("//***\n2***4")).to eql(6)
     end
 
-    # it "raises exception when negative number used" do
-    #   expect{ subject.add("1,-2,3,4")}.to raise_error
-    # end
-
     it "raises 'negatives not allowed' exception when negative number used, including negatives" do
-      # expect{ subject.add("1,-2,3,4")}.to raise_error(NegativesError, "negatives not allowed")
       expect{ subject.add("1,-2,3,4")}.to raise_error(NegativesError, "negatives not allowed: -2")
       expect{ subject.add("1,-2,-3,4")}.to raise_error(NegativesError, "negatives not allowed: -2, -3")
     end
