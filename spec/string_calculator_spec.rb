@@ -27,6 +27,12 @@ describe Calculator do
 
       expect(sum).to eql(10)
     end
+
+    it "returns sum given string containing comma and new line as separators" do
+      sum = Calculator.add("1,2\n3")
+
+      expect(sum).to eql(6)
+    end
   end
 end
 
