@@ -28,9 +28,14 @@ class Calculator
     else
       numbers = input_string
     end
-    # numbers.split(/[,\n]/).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
     regexp = Regexp.new get_regexp(input_string)
-    numbers.split(regexp).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
+    num_array = numbers.split(regexp).map(&:to_i)
+
+    if num_array.any? {|num| num < 0 }
+      raise "negatives not allowed"
+    end
+
+    num_array.reject{ |num| num > 1000 }.reduce(0, :+)
   end
 end
 

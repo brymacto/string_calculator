@@ -31,6 +31,14 @@ describe Calculator do
     it "supports custom delimiters of any length" do
       expect(subject.add("//***\n2***4")).to eql(6)
     end
+
+    it "raises exception when negative number used" do
+      expect{ subject.add("1,-2,3,4")}.to raise_error
+    end
+
+    # it "raises custom exception when negative number used" do
+    #   expect(subject.add("1,-2,3,4")).to throw_symbol(:"negatives not allowed")
+    # end
   end
 
   describe "#get_regexp" do
