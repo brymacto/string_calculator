@@ -33,6 +33,12 @@ describe Calculator do
 
       expect(sum).to eql(6)
     end
+
+    it "ignores numbers bigger than one thousand" do
+      sum = Calculator.add("1,1002,3")
+
+      expect(sum).to eql(4)
+    end
   end
 end
 
