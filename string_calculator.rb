@@ -38,7 +38,7 @@ class Calculator
 
 
     if num_array.any? {|num| num < 0 }
-      raise NegativesError, "negatives not allowed: #{negatives.join(',')}"
+      raise NegativesError, "negatives not allowed: #{negatives.join(', ')}"
     end
 
     num_array.reject{ |num| num > 1000 }.reduce(0, :+)
