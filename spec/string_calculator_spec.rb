@@ -32,6 +32,9 @@ describe Calculator do
     it "returns regexp given delimiter" do
       expect(subject.get_regexp(';')).to eql("[,\n;]")
     end
+    it "returns original regexp given no delimiter" do
+      expect(subject.get_regexp(nil)).to eql("[,\n]")
+    end
   end
 
   describe "#get_delimiter" do
