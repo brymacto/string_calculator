@@ -1,6 +1,38 @@
 class Calculator
+  attr_reader :input_string
 
-  def get_delimiter(input_string)
+  def add(input_string)
+    @input_string = input_string
+
+    check_for_negatives! parse
+
+    parse.reject{ |num| num > 1000 }.reduce(0, :+)
+  end
+
+  private
+
+  def parse
+    numbers.split(delimiters).map(&:to_i)
+  end
+
+  def check_for_negatives!(numbers)
+    negatives = numbers.select { |number| number < 0 }
+    raise NegativesError, "negatives not allowed: #{negatives.join(', ')}" unless negatives.empty?
+  end
+
+  def numbers
+    if custom_delimiters
+      input_string[3 + custom_delimiters.length, input_string.length]
+    else
+      input_string
+    end
+  end
+
+  def delimiters
+    Regexp.new "[,\n#{custom_delimiters}]"
+  end
+
+  def custom_delimiters
     if input_string.index("//") == 0
       endpoint = input_string.index("\n").to_i - 2
       input_string[2,endpoint]
@@ -8,43 +40,7 @@ class Calculator
       nil
     end
   end
-
-  def get_numbers(input_string)
-    delimiter = get_delimiter(input_string)
-    if delimiter
-      input_string[3 + delimiter.length, input_string.length]
-    else
-      input_string
-    end
-  end
-
-  def get_regexp(input_string)
-    "[,\n#{get_delimiter(input_string)}]"
-  end
-
-  def add(input_string)
-    if get_delimiter(input_string)
-      numbers = get_numbers(input_string)
-    else
-      numbers = input_string
-    end
-    regexp = Regexp.new get_regexp(input_string)
-    num_array = numbers.split(regexp).map(&:to_i)
-
-    negatives = []
-    num_array.each do |num| 
-      negatives << num if num < 0
-    end
-
-
-    if num_array.any? {|num| num < 0 }
-      raise NegativesError, "negatives not allowed: #{negatives.join(', ')}"
-    end
-
-    num_array.reject{ |num| num > 1000 }.reduce(0, :+)
-  end
 end
-
 
 class NegativesError < StandardError
 
