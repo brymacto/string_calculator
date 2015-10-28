@@ -43,6 +43,11 @@ describe Calculator do
     it "returns numbers excluding delimiter" do
       expect(subject.get_numbers("//;\n1;2")).to eql("1;2")
     end
+
+    it "returns original numbers if there is no delimiter" do
+      expect(subject.get_numbers(";\n1;2")).to eql(";\n1;2")
+      expect(subject.get_numbers("//;1;2")).to eql("//;1;2")
+    end
   end
 end
 
