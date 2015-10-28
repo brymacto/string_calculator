@@ -35,9 +35,13 @@ describe Calculator do
     end
 
     it "ignores numbers bigger than one thousand" do
-      sum = Calculator.add("1,1002,3")
+      sum1 = Calculator.add("1,999,3")
+      sum2 = Calculator.add("1,1000,3")
+      sum3 = Calculator.add("1,1001,3")
 
-      expect(sum).to eql(4)
+      expect(sum1).to eql(1003)
+      expect(sum2).to eql(1004)
+      expect(sum3).to eql(4)
     end
   end
 end
