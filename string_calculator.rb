@@ -19,7 +19,7 @@ class Calculator
   end
 
   def get_regexp(input_string)
-    "[,\n;#{get_delimiter(input_string)}]"
+    "[,\n#{get_delimiter(input_string)}]"
   end
 
   def add(input_string)
