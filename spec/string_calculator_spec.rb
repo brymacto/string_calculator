@@ -36,9 +36,11 @@ describe Calculator do
       expect{ subject.add("1,-2,3,4")}.to raise_error
     end
 
-    # it "raises custom exception when negative number used" do
-    #   expect(subject.add("1,-2,3,4")).to throw_symbol(:"negatives not allowed")
-    # end
+    it "raises 'negatives not allowed' exception when negative number used" do
+      expect{ subject.add("1,-2,3,4")}.to raise_error { |error|
+        error.should be_a(NegativesErorr)
+      }
+    end
   end
 
   describe "#get_regexp" do
