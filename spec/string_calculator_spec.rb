@@ -7,6 +7,12 @@ describe Calculator do
 
       expect(sum).to eql(0)
     end
+
+    it "returns sum given number" do
+      sum = Calculator.add('1')
+
+      expect(sum).to eql(1)
+    end
   end
 end
 
