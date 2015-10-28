@@ -18,6 +18,10 @@ class Calculator
     end
   end
 
+  def get_regexp(input_string)
+
+  end
+
   def add(input_string)
     if get_delimiter(input_string)
       numbers = get_numbers(input_string)
