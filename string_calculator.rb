@@ -5,7 +5,7 @@ class Calculator
       endpoint = input_string.index("\n").to_i - 2
       input_string[2,endpoint]
     else
-
+      nil
     end
   end
 

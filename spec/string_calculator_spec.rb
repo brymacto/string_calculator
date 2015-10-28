@@ -26,9 +26,10 @@ describe Calculator do
       expect(subject.get_delimiter("//;\n1;2")).to eql(';')
     end
 
-    # it "doesn't determine custom delimiter if not present" do
-
-    # end
+    it "doesn't determine custom delimiter if not present" do
+      expect(subject.get_delimiter(";\n1;2")).to eql(nil)
+      expect(subject.get_delimiter("//;1;2")).to eql(nil)
+    end
 
     # it "supports custom delimiters" do
     #   expect(subject.add("//;\n1;2")).to eql(3)
