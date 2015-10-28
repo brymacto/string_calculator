@@ -13,6 +13,14 @@ describe Calculator do
 
       expect(sum).to eql(1)
     end
+
+    it "returns sum given two numbers" do
+      sum = Calculator.add('1,2')
+      sum2 = Calculator.add('2,2')
+
+      expect(sum).to eql(3)
+      expect(sum2).to eql(4)
+    end
   end
 end
 
