@@ -22,6 +22,13 @@ describe Calculator do
       expect(subject.add("1,1001,3")).to eql(4)
     end
 
+
+    # it "supports custom delimiters" do
+    #   expect(subject.add("//;\n1;2")).to eql(3)
+    # end
+  end
+
+  describe "#get_delimiter" do
     it "determines custom delimiter" do
       expect(subject.get_delimiter("//;\n1;2")).to eql(';')
     end
@@ -30,10 +37,6 @@ describe Calculator do
       expect(subject.get_delimiter(";\n1;2")).to eql(nil)
       expect(subject.get_delimiter("//;1;2")).to eql(nil)
     end
-
-    # it "supports custom delimiters" do
-    #   expect(subject.add("//;\n1;2")).to eql(3)
-    # end
   end
 end
 
