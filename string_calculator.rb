@@ -18,7 +18,12 @@ class Calculator
     end
   end
 
-  def add(numbers)
+  def add(input_string)
+    if get_delimiter(input_string)
+      numbers = get_numbers(input_string)
+    else
+      numbers = input_string
+    end
     numbers.split(/[,\n]/).map(&:to_i).reject{ |num| num > 1000 }.reduce(0, :+)
   end
 end

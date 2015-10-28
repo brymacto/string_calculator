@@ -23,9 +23,9 @@ describe Calculator do
     end
 
 
-    # it "supports custom delimiters" do
-    #   expect(subject.add("//;\n1;2")).to eql(3)
-    # end
+    it "supports custom delimiters" do
+      expect(subject.add("//;\n1;2")).to eql(3)
+    end
   end
 
   describe "#get_delimiter" do
